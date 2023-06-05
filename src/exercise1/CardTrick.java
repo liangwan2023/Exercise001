@@ -8,6 +8,8 @@ package exercise1;
  * @author dancye
  * @author Paul Bonenfant Jan 25, 2022 
  */
+import java.util.Random;
+import java.util.Scanner;
 public class CardTrick {
     
     public static void main(String[] args) {
@@ -22,6 +24,32 @@ public class CardTrick {
             // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
             //       Don't worry about duplicates at this point
         }
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your card value (1-10, 11 for Jack, 12 for Queen, 13 for King): ");
+        int value = scanner.nextInt();
+
+        System.out.print("Enter your card suit (1 for Hearts, 2 for Diamonds, 3 for Clubs, 4 for Spades): ");
+        int suitIndex = scanner.nextInt() - 1;
+        String suit = Card.SUITS[suitIndex];
+
+        Card userCard = new Card();
+        userCard.setValue(value);
+        userCard.setSuit(suit);
+        
+        boolean foundMatch = false;
+
+        for (Card card : hand) {
+        if (card.getValue() == userCard.getValue() && card.getSuit().equals(userCard.getSuit())) {
+        foundMatch = true;
+        break;
+    }
+    }
+
+        if (foundMatch) {
+        printInfo();
+    }
+
 
         // insert code to ask the user for Card value and suit, create their card
         // and search the hand here. 
@@ -37,9 +65,9 @@ public class CardTrick {
 
     /**
      * A simple method to print out personal information. Follow the instructions to 
-     * replace this information with your own.
-     * @author Paul Bonenfant Jan 2022
+     * @author Wanqin Liang June 04,2023
      */
+    // I have done and been ready to push.
     private static void printInfo() {
     
         System.out.println("Congratulations, you guessed right!");
